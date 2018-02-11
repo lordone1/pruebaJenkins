@@ -17,11 +17,11 @@ node {
    echo 'Descargando código de SCM'
    sh 'rm -rf *'
    checkout scm
-   javac *.java
+   sh 'javac *.java'
    
    // -- Compilando
    echo 'Compilando aplicación.'
    //sh 'mvn clean compile'
    stage 'ejecutar'
-   java PruebaJava
+   sh 'java PruebaJava'
 }
