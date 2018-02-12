@@ -22,5 +22,5 @@ node {
    echo 'Compilando aplicación.'
    sh 'mvn clean compile'
    stage 'ejecutar'
-   mvn 'test'
+   sh 'test'
 }
