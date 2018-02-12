@@ -21,6 +21,6 @@ node {
    // -- Compilando
    echo 'Compilando aplicación.'
    sh 'mvn clean compile'
-   stage 'ejecutar'
-   sh 'test'
+   stage 'testing'
+   sh 'mvn test'
 }
