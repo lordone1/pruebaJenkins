@@ -1,26 +1,15 @@
 #!groovy
 
-node {
-   // ------------------------------------
-   // -- ETAPA: Compilar
-   // ------------------------------------
-   stage 'Compilar'
-   
-   // -- Configura variables
-   echo 'Configurando variables'
-   def mvnHome = tool 'mvn'
-   env.PATH = "${mvnHome}/bin:${env.PATH}"
-   echo "var mvnHome='${mvnHome}'"
-   echo "var env.PATH='${env.PATH}'"
-   
-   // -- Descarga código desde SCM
-   echo 'Descargando código de SCM'
-   sh 'rm -rf *'
-   checkout scm
-   
-   // -- Compilando
-   echo 'Compilando aplicación.'
-   sh 'mvn clean compile'
-   stage 'testing'
-   sh 'mvn test'
+pipeline {
+    agent any
+    parameters {
+        string(name: 'Greeting', defaultValue: 'Hello', description: 'How should I greet the world?')
+    }
+    stages {
+        stage('Example') {
+            steps {
+                echo "${params.Greeting} World!"
+            }
+        }
+    }
 }
